@@ -49,7 +49,7 @@ function saveDB(db) {
 
 // --- 🏠 الصفحة الرئيسية (تضمن فتح الموقع) ---
 app.get("/", (req, res) => {
-    res.sendFile(path.join(FRONTEND_FOLDER, "index.html"));
+    res.sendFile(path.join("index.html"));
 });
 
 // --- 📊 تسجيل الزيارات ---
@@ -173,3 +173,4 @@ app.get("/admin/dashboard", (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
