@@ -12,16 +12,17 @@ app.use(cors());
 app.use(express.json());
 
 // ====== 💰 إعدادات المتجر ======
-const WALLET = "TY1GSbMY6nHVfjxzqQnQTsbxVQbcFqcjRV"; 
-const AMOUNT = 15; 
-const TRON_API_KEY = "c1e2440b-1ecf-4e2d-aca6-820997a56566"; 
+const WALLET = "TY1GSbMY6nHVfjxzqQnQTsbxVQbcFqcjRV";
+const AMOUNT = 15;
+const TRON_API_KEY = "c1e2440b-1ecf-4e2d-aca6-820997a56566";
 // =============================
 
 // تحديد المسارات بدقة
 const DB_PATH = path.join(__dirname, "db.json");
-const PDF_FOLDER = path.join(__dirname, "pdf"); 
-// ملاحظة: تأكد أن مجلد frontend بجانب مجلد backend وليس داخله
-const FRONTEND_FOLDER = path.join(__dirname, "../frontend");
+const PDF_FOLDER = path.join(__dirname, "pdf");
+
+// ✅ التعديل هنا: حذفنا النقطتين (../) ليقرأ المجلد الموجود بجانبه مباشرة
+const FRONTEND_FOLDER = path.join(__dirname, "frontend");
 
 app.use(express.static(FRONTEND_FOLDER));
 
@@ -59,8 +60,7 @@ app.get("/track-visit", (req, res) => {
     res.json({ success: true });
 });
 
-// --- 💰 التحقق من الدفع (تم تصحيح الرابط ليطابق الواجهة) ---
-// 👇 هنا كان الخطأ، قمت بتغييره ليصبح /api/check-payment
+// --- 💰 التحقق من الدفع ---
 app.post("/api/check-payment", async (req, res) => {
     try {
         const db = loadDB();
@@ -117,7 +117,6 @@ app.post("/api/check-payment", async (req, res) => {
 
 // --- 📥 التحميل ---
 app.get("/download-book", (req, res) => {
-    // توجيه المستخدم لصفحة التحميل أو تحميل الملف مباشرة إذا كان لديه توكن
     res.send("<h1>يجب إتمام الدفع أولاً للحصول على رابط التحميل</h1>");
 });
 
@@ -126,7 +125,6 @@ app.get("/download/:token", (req, res) => {
     const t = db.tokens[req.params.token];
     if (!t) return res.status(403).send("<h1>❌ الرابط منتهي أو غير صالح</h1>");
 
-    // تأكد أن ملف الكتاب موجود في مجلد pdf داخل backend
     const filePath = path.join(PDF_FOLDER, "shield.pdf");
     if (fs.existsSync(filePath)) {
         res.download(filePath);
@@ -160,7 +158,7 @@ app.get("/admin/dashboard", (req, res) => {
         </style>
     </head>
     <body> 
-        <h1>لوحة تحكم سيكلوجية البقاء "
+        <h1>لوحة تحكم سيكلوجية البقاء </h1>
         <h3>الأرباح الكلية: $${db.stats.earnings}</h3>
         <table>
             <tr><th>التاريخ</th><th>العملية</th><th>المبلغ</th></tr>
@@ -174,5 +172,4 @@ app.get("/admin/dashboard", (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
-
 });
