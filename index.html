@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سيكلوجية البقاء | Master Gold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        'gold-primary': '#D4AF37',
+                        'gold-dark': '#996515',
+                        'deep-bg': '#050505',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg)' },
+                        },
+                        glow: {
+                            'from': { 'box-shadow': '0 0 10px #D4AF37, 0 0 20px #D4AF37' },
+                            'to': { 'box-shadow': '0 0 20px #fbbf24, 0 0 40px #fbbf24' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%);
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .text-gold-gradient {
+            background: linear-gradient(to bottom, #D4AF37, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #paymentModal { display: none; }
+    </style>
+</head>
+<body class="text-white min-h-screen font-sans">
+
+    <div class="fixed top-4 left-4 z-50 glass px-4 py-2 rounded-full border border-gold-primary/30">
+        <span class="text-xs text-gray-400">المتصلون الآن:</span>
+        <span id="visitorCount" class="text-gold-primary font-bold ml-1">14,582</span>
+    </div>
+
+    <a href="https://t.me/MG_Master_Gold" target="_blank" class="fixed bottom-6 left-6 z-50 bg-[#229ED9] p-4 rounded-full shadow-2xl hover:scale-110 transition animate-bounce">
+        <i class="fab fa-telegram-plane text-2xl text-white"></i>
+    </a>
+
+    <nav class="p-8 flex justify-between items-center container mx-auto">
+        <div class="text-3xl font-black text-gold-gradient tracking-tighter">MASTER GOLD</div>
+        <div class="hidden md:block text-gold-primary/60 text-sm italic">" .......الصمود ليس خياراً، بل سيكلوجية"</div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-10 flex flex-col lg:flex-row items-center gap-16">
+        
+        <div class="lg:w-1/2 space-y-8 text-center lg:text-right">
+            <h1 class="text-6xl lg:text-8xl font-black leading-none">
+                <span class="block text-white">كتاب</span>
+                <span class="text-gold-gradient">سيكلوجية البقاء</span>
+            </h1>
+            
+            <p class="text-gray-400 text-xl max-w-2xl leading-relaxed mx-auto lg:mr-0">
+                الدليل الأقوى في فهم استراتيجيات البقاء النفسي والمادي. النسخة الحصرية والمحمية لن تجدها في مكان آخر.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4">
+                <div class="text-center p-4 border-l border-gold-primary/20">
+                    <div class="text-3xl font-bold text-gold-primary">$15</div>
+                    <div class="text-xs text-gray-500 uppercase">سعر النسخة</div>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-3xl font-bold text-white">PDF</div>
+                    <div class="text-xs text-gray-500 uppercase">صيغة الملف</div>
+                </div>
+            </div>
+
+            <div class="pt-6">
+                <button onclick="openPayment()" class="group relative px-10 py-5 bg-gold-primary text-black font-black text-xl rounded-full overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                    <span class="relative z-10"><i class="fas fa-bolt ml-2"></i> اشترِ الآن واستلم فوراً</span>
+                    <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                </button>
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 relative">
+            <div class="relative z-10 w-80 h-[500px] lg:w-[400px] lg:h-[600px] mx-auto animate-float">
+                <img src="cover.jpg" onerror="this.src='https://placehold.co/400x600/000/D4AF37?text=سيكلوجية+البقاء'" 
+                     class="w-full h-full object-cover rounded-2xl shadow-[0_0_50px_rgba(0,0,0,1)] border border-gold-primary/20">
+                
+                <div class="absolute inset-0 rounded-2xl border-2 border-gold-primary/10 pointer-events-none"></div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gold-primary/10 blur-[120px] -z-10"></div>
+        </div>
+    </main>
+
+    <div id="paymentModal" class="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4">
+        <div class="glass p-10 rounded-[3rem] max-w-lg w-full text-center space-y-8 border-gold-primary/40 relative">
+            <button onclick="closePayment()" class="absolute top-6 left-6 text-gray-500 hover:text-gold-primary"><i class="fas fa-times text-xl"></i></button>
+            
+            <div class="inline-block p-4 rounded-2xl bg-gold-primary/10 text-gold-primary text-4xl mb-2">
+                <i class="fas fa-wallet"></i>
+            </div>
+            
+            <h2 class="text-3xl font-black">الدفع عبر USDT <span class="text-sm font-normal text-gray-400 block mt-1">(الشبكة: TRC20)</span></h2>
+            
+            <div class="space-y-4">
+                <p class="text-gray-400">حول <span class="text-white font-bold">15 USDT</span> للعنوان التالي:</p>
+                <div class="bg-black/80 p-5 rounded-2xl border border-gold-primary/20 break-all font-mono text-gold-primary text-lg select-all">
+                    TY1GSbMY6nHVfjxzqQnQTsbxVQbcFqcjRV
+                </div>
+            </div>
+
+            <button onclick="checkPayment()" id="btnText" class="w-full py-5 bg-gradient-to-r from-gold-dark to-gold-primary text-black font-black rounded-2xl hover:shadow-[0_0_20px_rgba(212,175,55,0.5)] transition">
+                <i class="fas fa-sync-alt ml-2"></i> لقد حولت، تأكد من العملية
+            </button>
+            
+            <p id="statusMsg" class="text-sm h-4"></p>
+        </div>
+    </div>
+
+    <footer class="text-center py-10 text-gray-600 text-sm border-t border-white/5 mt-20">
+        2026 Master Gold. جميع حقوق الطبع والنشر محفوظة.
+    </footer>
+
+    <script>
+        // سكريبت عداد الزيارات الوهمي
+        let count = 14582;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5);
+            document.getElementById('visitorCount').innerText = count.toLocaleString();
+        }, 3000);
+
+        function openPayment() { document.getElementById('paymentModal').style.display = 'flex'; }
+        function closePayment() { document.getElementById('paymentModal').style.display = 'none'; }
+
+        async function checkPayment() {
+            const status = document.getElementById('statusMsg');
+            const btn = document.getElementById('btnText');
+            
+            status.innerHTML = '<span class="text-gold-primary animate-pulse">جاري التحقق من شبكة ترون...</span>';
+            btn.disabled = true;
+
+            try {
+                // الربط مع كود السيرفر الخاص بك (API)
+                const response = await fetch('/api/check-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    status.innerHTML = '<span class="text-green-500 font-bold">✅ تم التحقق! جاري بدء التحميل...</span>';
+                    setTimeout(() => { window.location.href = data.downloadUrl; }, 1500);
+                } else {
+                    status.innerHTML = `<span class="text-red-500">${data.message || 'الدفع غير مكتمل'}</span>`;
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                status.innerHTML = '<span class="text-red-500">فشل الاتصال بالسيرفر</span>';
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

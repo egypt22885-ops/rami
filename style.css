@@ -1,0 +1,78 @@
+body{
+  background:#020617;
+  font-family:Tahoma,Inter;
+  color:#fff;
+  margin:0;
+}
+.app{
+  max-width:520px;
+  margin:70px auto;
+  padding:30px;
+  background:#020617;
+  border-radius:16px;
+  box-shadow:0 0 40px rgba(0,0,0,.6);
+}
+h1{
+  text-align:center;
+  color:#f5c77a;
+}
+.subtitle{
+  text-align:center;
+  opacity:.7;
+}
+.price{
+  text-align:center;
+  margin:30px 0;
+}
+.old{
+  color:red;
+  text-decoration:line-through;
+}
+.new{
+  display:block;
+  font-size:34px;
+  color:#22c55e;
+  font-weight:bold;
+}
+.badge{
+  background:#22c55e;
+  color:#000;
+  padding:5px 14px;
+  border-radius:20px;
+  font-size:13px;
+}
+.details{
+  margin-bottom:25px;
+  line-height:1.8;
+}
+.box{
+  border:1px solid #1e293b;
+  padding:20px;
+  border-radius:12px;
+}
+.wallet{
+  background:#020617;
+  border:1px solid #334155;
+  padding:10px;
+  word-break:break-all;
+  margin:10px 0;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#f5c77a;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+#status{
+  margin-top:10px;
+  font-size:14px;
+}
+.whatsapp{
+  display:block;
+  margin-top:25px;
+  text-align:center;
+  color:#22c55e;
+  text-decoration:none;
+}
