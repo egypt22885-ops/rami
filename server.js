@@ -21,10 +21,11 @@ const TRON_API_KEY = "c1e2440b-1ecf-4e2d-aca6-820997a56566";
 const DB_PATH = path.join(__dirname, "db.json");
 const PDF_FOLDER = path.join(__dirname, "pdf");
 
-// ✅ التعديل هنا: حذفنا النقطتين (../) ليقرأ المجلد الموجود بجانبه مباشرة
-const FRONTEND_FOLDER = path.join(__dirname, "frontend");
+// ✅ التعديل هنا: جعلنا المسار هو المجلد الحالي مباشرة لتجاوز مجلد frontend
+const ROOT_FOLDER = __dirname; 
 
-app.use(express.static(FRONTEND_FOLDER));
+// ✅ جعل المجلد الرئيسي هو مصدر الملفات الثابتة (Static Files)
+app.use(express.static(ROOT_FOLDER));
 
 // --- 💾 دوال قاعدة البيانات ---
 function loadDB() {
@@ -47,9 +48,10 @@ function saveDB(db) {
     fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
 }
 
-// --- 🏠 الصفحة الرئيسية (تضمن فتح الموقع) ---
+// --- 🏠 الصفحة الرئيسية (تعديل المسار ليعمل مباشرة) ---
 app.get("/", (req, res) => {
-    res.sendFile(path.join("index.html"));
+    // ✅ الآن سيتم البحث عن index.html بجانب ملف server.js مباشرة
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // --- 📊 تسجيل الزيارات ---
@@ -173,4 +175,3 @@ app.get("/admin/dashboard", (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
