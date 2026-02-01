@@ -14,7 +14,7 @@ app.use(express.json());
 // ====== 💰 إعدادات المتجر ======
 const WALLET = "TY1GSbMY6nHVfjxzqQnQTsbxVQbcFqcjRV"; 
 const AMOUNT = 15; 
-const TRON_API_KEY = "48fe1267-4dff-4931-b71e-df39912d3aec"; 
+const TRON_API_KEY = "c1e2440b-1ecf-4e2d-aca6-820997a56566"; 
 // =============================
 
 // تحديد المسارات بدقة
@@ -174,4 +174,5 @@ app.get("/admin/dashboard", (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
+
 });
